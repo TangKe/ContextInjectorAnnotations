@@ -1,0 +1,11 @@
+ext {
+    versions = [
+            compileSdkVersion: 28,
+            minSdkVersion    : 15,
+            targetSdkVersion : 28,
+            versionCode      : 6,
+            versionName      : '1.0.8',
+            kotlin           : '1.9.22',
+            build            : '8.2.2',
+    ]
+}

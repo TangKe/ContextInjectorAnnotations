@@ -1,0 +1,50 @@
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+tasks.javadoc {
+    configurations.implementation.setCanBeResolved(true)
+    classpath += configurations.implementation
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            artifactId = 'ContextInjectorAnnotations'
+            groupId = 'com.github.Tangke'
+            version = versions.versionName
+            afterEvaluate {
+                from components.java
+            }
+            pom {
+                name = 'ContextInjectorAnnotations'
+                description = 'Inject android application context any where'
+                url = 'http://github.com/TangKe/Refresh'
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'tangke'
+                        name = 'Tang Ke'
+                        email = 'tang.ke@me.com'
+                    }
+                }
+                scm {
+                    url = 'http://github.com/TangKe/ContextInjectorAnnotations.git'
+                }
+            }
+        }
+    }
+}
